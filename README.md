@@ -23,7 +23,7 @@ This is a (very) small javascript library to calculate inflation-adjusted prices
 ### Usage
 
 ```js
-import caInflation from './src/index.js'
+import caInflation from 'ca-inflation'
 
 // get the value of $100 in 1970, in 2024
 let res = caInflation(100, 1970, 2024)
