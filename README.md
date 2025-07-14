@@ -20,12 +20,6 @@ This is a (very) small javascript library to calculate inflation-adjusted prices
   <code>npm install ca-inflation</code>
 </div>
 
-The CPI is an official attempt to reckon the changes of the purchasing power of a normal household. Data for this is available annually, since Jan 1915.
-
-Regarding the calculation, there are apparently some subtle caveats which I do not understand. Results are comparable to many commercial calculators - although there is little agreement even between them.
-
-It really seems like this information is more difficult than it should be.
-
 ### Usage
 
 ```js
@@ -49,7 +43,13 @@ console.log(caInflation.getLatest())
 // 2024-01-01
 ```
 
-please let me know if there are any issues. This is important information.
+## Notes
+
+The CPI is an official attempt to reckon the changes of the purchasing power of a normal household. Data for this is available annually, since Jan 1915.
+
+Regarding the calculation, there are apparently some subtle caveats which I do not understand. Results are comparable to many commercial calculators - although there is little agreement even between them.
+
+Please let me know if there are any issues. This is important information, and this stuff is really more difficult than it should be.
 
 ### See also
 * [us-inflation](https://www.npmjs.com/package/us-inflation) by @jeremiak
