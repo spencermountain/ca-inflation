@@ -1,15 +1,25 @@
-import data from './data.js'
+import data from './data2.js'
 import { getDate, getRange, round, getGrowth, getAverage, toMultiple } from './lib.js'
+
+const calculate = function (val, changes) {
+  changes.forEach(([date, rate]) => {
+    const change = val * (rate)
+    val += change
+    console.log(`${date}: ${rate}% on ${(val - change).toFixed(2)} = ${val.toFixed(2)}`)
+  })
+  return val
+}
+
+const calculate2 = function (val, changes) {
+  const compoundMethod = changes.reduce((acc, [date, rate]) => acc * (1 + rate), 1)
+  return val * compoundMethod
+}
 
 const caInflation = (value, start, end) => {
   start = getDate(start)
   end = getDate(end)
   let changes = getRange(start, end)
-  let result = value
-  changes.forEach(o => {
-    let cpi = o[1] / 100 / 12
-    result += result * cpi
-  })
+  let result = calculate(value, changes)
   let average = getAverage(changes)
   let growth = getGrowth(value, result)
 
@@ -17,9 +27,10 @@ const caInflation = (value, start, end) => {
     start, end,
     initial: value,
     result: round(result),
-    average: round(average),
-    growth,
-    multiple: toMultiple(growth)
+    result2: calculate2(value, changes),
+    averageInflation: round(average),
+    percentChange: growth,
+    // multiple: toMultiple(growth)
   }
 }
 

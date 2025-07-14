@@ -1,4 +1,4 @@
-import data from './data.js'
+import data from './data2.js'
 
 const getDate = function (input) {
   if (typeof input === 'number') {
