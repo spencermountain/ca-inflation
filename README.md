@@ -16,18 +16,24 @@ npm install ca-inflation
 import caInflation from './src/index.js'
 
 // get the value of $100 in 1970, in 2024
-let res = caInflation(100, '1970-01-01', '1980-01-01')
+let res = caInflation(100, 1970, 1980)
 // {
 //   start: '1970-01-01',
-//   end: '1980-01-01',
+//   end: '2024-01-01',
 //   initial: 100,
-//   result: 208.67,
-//   average: 7.38,
-//   growth: 109,
-//   multiple: 2.09
+//   result: 798.52,
+//   averageInflation: 3.97,
+//   percentChange: 699
 // }
 ```
 
+this library is updated as often as possible, to see the most-recent data, use:
+```js
+console.log(caInflation.getLatest())
+// 2024-01-01
+```
+
+please let me know if there are any issues. This is important information, and also more-complicated than it should be.
 
 ### See also
 * [us-inflation](https://www.npmjs.com/package/us-inflation) by @jeremiak

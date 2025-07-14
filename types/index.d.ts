@@ -7,8 +7,8 @@ export interface InflationResult {
   end: string
   initial: number
   result: number
-  average: number
-  growth: number
+  averageInflation: number
+  percentChange: number
 }
 
 // Main function with static method

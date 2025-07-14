@@ -1,4 +1,4 @@
-import data from './data2.js'
+import data from './yearly.js'
 
 const getDate = function (input) {
   if (typeof input === 'number') {
@@ -22,12 +22,8 @@ const getGrowth = (from, to) => {
   return Math.round(percent)
 }
 
-const toMultiple = (percent) => {
-  return (percent / 100) + 1
-}
-
 const getAverage = function (changes) {
   return changes.reduce((acc, curr) => acc + curr[1], 0) / changes.length
 }
 
-export { getDate, getRange, round, getGrowth, toMultiple, getAverage }
+export { getDate, getRange, round, getGrowth, getAverage }
