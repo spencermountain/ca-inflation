@@ -14,7 +14,11 @@
 
 How does money change its worth? Do some prices change, more than others? Is it good? Where does the money go?
 
-This is a (very) small javascript library to calculate inflation-adjusted prices for Canadian Dollars, based on 'Composite Price Index' data from [statistics canada](https://www150.statcan.gc.ca/n1/pub/71-607-x/2018016/cpilg-ipcgl-eng.htm). 
+This is a (very) small javascript library to calculate inflation-adjusted prices for Canadian Dollars, based on 'Composite Price Index' data from [Statistics Canada](https://www150.statcan.gc.ca/n1/pub/71-607-x/2018016/cpilg-ipcgl-eng.htm). 
+
+<div align="center">
+  <code>npm install ca-inflation</code>
+</div>
 
 The CPI is an official attempt to reckon the changes of the purchasing power of a normal household. Data for this is available annually, since Jan 1915.
 
@@ -22,19 +26,13 @@ Regarding the calculation, there are apparently some subtle caveats which I do n
 
 It really seems like this information is more difficult than it should be.
 
-
-<div align="center">
-  <code>npm install ca-inflation</code>
-</div>
-
-
 ### Usage
 
 ```js
 import caInflation from './src/index.js'
 
 // get the value of $100 in 1970, in 2024
-let res = caInflation(100, 1970, 1980)
+let res = caInflation(100, 1970, 2024)
 // {
 //   start: '1970-01-01',
 //   end: '2024-01-01',
@@ -51,7 +49,7 @@ console.log(caInflation.getLatest())
 // 2024-01-01
 ```
 
-please let me know if there are any issues. This is important information, and also more-complicated than it should be.
+please let me know if there are any issues. This is important information.
 
 ### See also
 * [us-inflation](https://www.npmjs.com/package/us-inflation) by @jeremiak
