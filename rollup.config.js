@@ -1,8 +1,6 @@
 import commonjs from 'rollup-plugin-commonjs'
-import json from 'rollup-plugin-json'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser';
 import resolve from 'rollup-plugin-node-resolve'
-import sizeCheck from 'rollup-plugin-filesize-check'
 import fs from 'fs'
 
 let pkg = JSON.parse(fs.readFileSync('./package.json').toString())
@@ -15,7 +13,7 @@ export default [
   {
     input: 'src/index.js',
     output: [{ banner: banner, file: 'builds/ca-inflation.mjs', format: 'esm' }],
-    plugins: [resolve(), json(), terser(), sizeCheck({ expect: 48, warn: 10 })]
+    plugins: [resolve(), terser()]
   },
   {
     input: 'src/index.js',
@@ -30,9 +28,7 @@ export default [
     ],
     plugins: [
       resolve(),
-      json(),
       commonjs(),
-      sizeCheck({ expect: 110, warn: 10 })
     ]
   },
   {
@@ -40,10 +36,8 @@ export default [
     output: [{ banner: banner, file: 'builds/ca-inflation.min.js', format: 'umd', name: 'ca-inflation' }],
     plugins: [
       resolve(),
-      json(),
       commonjs(),
       terser(),
-      sizeCheck({ expect: 48, warn: 10 })
     ]
   }
 ]
