@@ -13,16 +13,19 @@ npm install ca-inflation
 ### Usage
 
 ```js
-import {getAdjustment, averageInflation} from 'ca-inflation'
+import caInflation from './src/index.js'
 
 // get the value of $100 in 1970, in 2024
-let val = getAdjustment(100, 1970, 2024)
-// $795.74
-
-let avg = averageInflation(1970, 2024)
-// 3.84%
-
-
+let res = caInflation(100, '1970-01-01', '1980-01-01')
+// {
+//   start: '1970-01-01',
+//   end: '1980-01-01',
+//   initial: 100,
+//   result: 208.67,
+//   average: 7.38,
+//   growth: 109,
+//   multiple: 2.09
+// }
 ```
 
 
