@@ -71,49 +71,63 @@
     ['2021-01-01', 3.395193],
     ['2022-01-01', 6.802801],
     ['2023-01-01', 3.8790016],
-    // 
-    ['2024-01-01', 2.4],
-    // ['2025-01-01', 1],
+    ['2024-01-01', 2.381584],
   ];
 
+  const firstDate = data[0][0];
+  const lastDate = data[data.length - 1][0];
+
+  // normalize 1970, '1970', or '1970-06-15' to '1970-01-01'
   const getDate = function (input) {
-    if (typeof input === 'number') {
-      return `${input}-01-01`
+    let m = String(input).match(/^(\d{4})/);
+    if (!m) {
+      throw new RangeError(`ca-inflation: cannot parse '${input}' as a year - try 1970 or '1970-01-01'`)
     }
-    return input
+    return `${m[1]}-01-01`
   };
 
   const getRange = (start, end) => {
-    start = getDate(start);
-    end = getDate(end);
     let startIndex = data.findIndex(d => d[0] === start);
     let endIndex = data.findIndex(d => d[0] === end);
-    return data.slice(startIndex, endIndex)
+    if (startIndex === -1) {
+      throw new RangeError(`ca-inflation: no data for '${start}' - data covers ${firstDate} to ${lastDate}`)
+    }
+    if (endIndex === -1) {
+      throw new RangeError(`ca-inflation: no data for '${end}' - data covers ${firstDate} to ${lastDate}`)
+    }
+    if (endIndex < startIndex) {
+      throw new RangeError(`ca-inflation: end date '${end}' is before start date '${start}'`)
+    }
+    // the rate labelled year Y is the price-change from Y-1 to Y,
+    // so converting start→end dollars applies the rates for start+1 through end
+    return data.slice(startIndex + 1, endIndex + 1)
   };
 
   const round = n => Math.round(n * 100) / 100;
 
   const getGrowth = (from, to) => {
-    let percent = (to / from - 1) * 100;
-    return Math.round(percent)
+    return round((to / from - 1) * 100)
   };
 
+  // compound annual rate (geometric mean), like official inflation calculators report
   const getAverage = function (changes) {
-    return changes.reduce((acc, curr) => acc + curr[1], 0) / changes.length
+    if (changes.length === 0) {
+      return 0
+    }
+    let factor = changes.reduce((acc, [, rate]) => acc * (1 + rate / 100), 1);
+    return (Math.pow(factor, 1 / changes.length) - 1) * 100
   };
 
   const calculate = function (val, changes) {
-    changes.forEach(([date, rate]) => {
-      const change = val * (rate / 100);
-      val += change;
-      // console.log(`${date}: ${rate}% on ${(val - change).toFixed(2)} = ${val.toFixed(2)}`)
+    changes.forEach(([, rate]) => {
+      val += val * (rate / 100);
     });
     return val
   };
 
   const caInflation = (value, start, end) => {
     start = getDate(start);
-    end = getDate(end);
+    end = end === undefined ? data[data.length - 1][0] : getDate(end);
     let changes = getRange(start, end);
     let result = calculate(value, changes);
     let average = getAverage(changes);

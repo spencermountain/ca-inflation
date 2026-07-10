@@ -1,8 +1,8 @@
 // Input types for date parameters
-export type DateInput = string | number // a year like 1970, '1970', or a date string like '1970-01-01'
+declare type DateInput = string | number // a year like 1970, '1970', or a date string like '1970-01-01'
 
 // Result type for the main function
-export interface InflationResult {
+declare interface InflationResult {
   start: string
   end: string
   initial: number
@@ -12,7 +12,7 @@ export interface InflationResult {
 }
 
 // Main function with static method
-export interface CaInflationFunction {
+declare interface CaInflationFunction {
   /** convert a dollar amount from start-year dollars to end-year dollars.
    *  end defaults to the latest year in the data.
    *  throws a RangeError for dates outside the data, or a reversed range. */
@@ -21,6 +21,6 @@ export interface CaInflationFunction {
   getLatest(): string
 }
 
-export declare const caInflation: CaInflationFunction
+declare const caInflation: CaInflationFunction
 
-export default caInflation
+export = caInflation

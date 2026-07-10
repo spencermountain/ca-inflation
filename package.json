@@ -1,6 +1,6 @@
 {
   "name": "ca-inflation",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "calculate the inflation rate of the Canadian dollar",
   "main": "src/index.js",
   "unpkg": "builds/ca-inflation.min.js",
