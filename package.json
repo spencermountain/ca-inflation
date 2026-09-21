@@ -6,6 +6,8 @@
   "unpkg": "builds/ca-inflation.min.js",
   "types": "types/index.d.ts",
   "type": "module",
+  "homepage": "https://work.spencermountain.dev/ca-inflation",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
   "sideEffects": false,
   "exports": {
     ".": {
@@ -27,10 +29,7 @@
     "watch": "node --watch scratch.js",
     "lint": "eslint ."
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/spencermountain/ca-inflation.git"
-  },
+  "repository": "github:spencermountain/ca-inflation",
   "files": [
     "src",
     "builds",
