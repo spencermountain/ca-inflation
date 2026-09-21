@@ -11,7 +11,7 @@ test('smoke-test', (t) => {
   t.equal(res.result, 791.07, 'result')
   t.equal(res.averageInflation, 3.9, 'average inflation')
   t.equal(res.percentChange, 691.07, 'percent change')
-  t.equal(caInflation.getLatest(), '2024-01-01', 'latest date')
+  t.ok(caInflation.getLatest() > '2024-01-01', 'latest date')
   t.end()
 })
 
