@@ -7,19 +7,25 @@ const lastDate = data[data.length - 1][0]
 const getDate = function (input) {
   let m = String(input).match(/^(\d{4})/)
   if (!m) {
-    throw new RangeError(`ca-inflation: cannot parse '${input}' as a year - try 1970 or '1970-01-01'`)
+    throw new RangeError(
+      `ca-inflation: cannot parse '${input}' as a year - try 1970 or '1970-01-01'`
+    )
   }
   return `${m[1]}-01-01`
 }
 
 const getRange = (start, end) => {
-  let startIndex = data.findIndex(d => d[0] === start)
-  let endIndex = data.findIndex(d => d[0] === end)
+  let startIndex = data.findIndex((d) => d[0] === start)
+  let endIndex = data.findIndex((d) => d[0] === end)
   if (startIndex === -1) {
-    throw new RangeError(`ca-inflation: no data for '${start}' - data covers ${firstDate} to ${lastDate}`)
+    throw new RangeError(
+      `ca-inflation: no data for '${start}' - data covers ${firstDate} to ${lastDate}`
+    )
   }
   if (endIndex === -1) {
-    throw new RangeError(`ca-inflation: no data for '${end}' - data covers ${firstDate} to ${lastDate}`)
+    throw new RangeError(
+      `ca-inflation: no data for '${end}' - data covers ${firstDate} to ${lastDate}`
+    )
   }
   if (endIndex < startIndex) {
     throw new RangeError(`ca-inflation: end date '${end}' is before start date '${start}'`)
@@ -29,7 +35,7 @@ const getRange = (start, end) => {
   return data.slice(startIndex + 1, endIndex + 1)
 }
 
-const round = n => Math.round(n * 100) / 100
+const round = (n) => Math.round(n * 100) / 100
 
 const getGrowth = (from, to) => {
   return round((to / from - 1) * 100)

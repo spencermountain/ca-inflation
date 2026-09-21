@@ -1,5 +1,6 @@
+/* eslint-disable no-console */
 import commonjs from 'rollup-plugin-commonjs'
-import terser from '@rollup/plugin-terser';
+import terser from '@rollup/plugin-terser'
 import resolve from 'rollup-plugin-node-resolve'
 import fs from 'fs'
 
@@ -26,18 +27,13 @@ export default [
         name: 'ca-inflation'
       }
     ],
-    plugins: [
-      resolve(),
-      commonjs(),
-    ]
+    plugins: [resolve(), commonjs()]
   },
   {
     input: 'src/index.js',
-    output: [{ banner: banner, file: 'builds/ca-inflation.min.js', format: 'umd', name: 'ca-inflation' }],
-    plugins: [
-      resolve(),
-      commonjs(),
-      terser(),
-    ]
+    output: [
+      { banner: banner, file: 'builds/ca-inflation.min.js', format: 'umd', name: 'ca-inflation' }
+    ],
+    plugins: [resolve(), commonjs(), terser()]
   }
 ]

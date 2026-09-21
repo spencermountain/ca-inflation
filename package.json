@@ -23,8 +23,9 @@
     "build": "rollup -c --silent",
     "update": "node ./scripts/update.js",
     "release": "./scripts/release.sh",
-    "test": "node --test --test-reporter=spec tests/*.test.js",
-    "watch": "node --watch scratch.js"
+    "test": "tape tests/*.test.js | tap-dancer",
+    "watch": "node --watch scratch.js",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -47,8 +48,9 @@
     "rollup": "4.45.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
-    "tap-dancer": "0.3.4",
-    "tape": "5.9.0"
+    "tap-dancer": "0.4.0",
+    "tape": "5.9.0",
+    "eslint": "10.10.0"
   },
   "license": "MIT"
 }
