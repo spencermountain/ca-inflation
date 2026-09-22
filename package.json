@@ -1,6 +1,6 @@
 {
   "name": "ca-inflation",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "calculate the inflation rate of the Canadian dollar",
   "license": "MIT",
   "repository": "github:spencermountain/ca-inflation",
