@@ -2,10 +2,10 @@
 import commonjs from 'rollup-plugin-commonjs'
 import terser from '@rollup/plugin-terser'
 import resolve from 'rollup-plugin-node-resolve'
-import fs from 'fs'
+import fs from 'node:fs'
 
-let pkg = JSON.parse(fs.readFileSync('./package.json').toString())
-let version = pkg.version
+const pkg = JSON.parse(fs.readFileSync('./package.json').toString())
+const version = pkg.version
 console.log('\n 📦  - running rollup..\n')
 
 const banner = '/* spencermountain/ca-inflation ' + version + ' MIT */'

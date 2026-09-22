@@ -79,7 +79,7 @@
 
   // normalize 1970, '1970', or '1970-06-15' to '1970-01-01'
   const getDate = function (input) {
-    let m = String(input).match(/^(\d{4})/);
+    const m = String(input).match(/^(\d{4})/);
     if (!m) {
       throw new RangeError(`ca-inflation: cannot parse '${input}' as a year - try 1970 or '1970-01-01'`)
     }
@@ -87,8 +87,8 @@
   };
 
   const getRange = (start, end) => {
-    let startIndex = data.findIndex(d => d[0] === start);
-    let endIndex = data.findIndex(d => d[0] === end);
+    const startIndex = data.findIndex(d => d[0] === start);
+    const endIndex = data.findIndex(d => d[0] === end);
     if (startIndex === -1) {
       throw new RangeError(`ca-inflation: no data for '${start}' - data covers ${firstDate} to ${lastDate}`)
     }
@@ -114,7 +114,7 @@
     if (changes.length === 0) {
       return 0
     }
-    let factor = changes.reduce((acc, [, rate]) => acc * (1 + rate / 100), 1);
+    const factor = changes.reduce((acc, [, rate]) => acc * (1 + rate / 100), 1);
     return (Math.pow(factor, 1 / changes.length) - 1) * 100
   };
 
@@ -128,10 +128,10 @@
   const caInflation = (value, start, end) => {
     start = getDate(start);
     end = end === undefined ? data[data.length - 1][0] : getDate(end);
-    let changes = getRange(start, end);
-    let result = calculate(value, changes);
-    let average = getAverage(changes);
-    let growth = getGrowth(value, result);
+    const changes = getRange(start, end);
+    const result = calculate(value, changes);
+    const average = getAverage(changes);
+    const growth = getGrowth(value, result);
 
     return {
       start, end,

@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
+ /* eslint-disable no-console */
 // refresh src/yearly.js from Our World in Data (World Bank annual CPI inflation, FP.CPI.TOTL.ZG)
-import fs from 'fs'
+import fs from 'node:fs'
 import current from '../src/yearly.js'
 
 const url =
@@ -15,7 +15,7 @@ fetch(url)
       .split('\n')
       .filter((line) => line.startsWith('Canada,CAN,'))
       .map((line) => {
-        let [, , year, rate] = line.trim().split(',')
+        const [, , year, rate] = line.trim().split(',', 4)
         return [`${year}-01-01`, Number(rate)]
       })
       .filter(([, rate]) => !isNaN(rate))
@@ -24,14 +24,14 @@ fetch(url)
       throw new Error('no Canada rows found in csv')
     }
     // keep any hand-added years newer than what OWID has
-    let newest = rows[rows.length - 1][0]
-    let manual = current.filter(([date]) => date > newest)
+    const newest = rows.at(-1)[0]
+    const manual = current.filter(([date]) => date > newest)
     rows = rows.concat(manual)
 
-    let lines = rows.map(([date, rate]) => `  ['${date}', ${rate}],`).join('\n')
-    let out = `// ${url}\nexport default [\n${lines}\n]\n`
+    const lines = rows.map(([date, rate]) => `  ['${date}', ${rate}],`).join('\n')
+    const out = `// ${url}\nexport default [\n${lines}\n]\n`
     fs.writeFileSync(filePath, out)
-    console.log(`wrote ${rows.length} rows - latest is ${rows[rows.length - 1][0]}`)
+    console.log(`wrote ${rows.length} rows - latest is ${rows.at(-1)[0]}`)
   })
   .catch((error) => {
     console.error('Error:', error)

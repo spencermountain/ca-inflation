@@ -10,11 +10,11 @@ const calculate = function (val, changes) {
 
 const caInflation = (value, start, end) => {
   start = getDate(start)
-  end = end === undefined ? data[data.length - 1][0] : getDate(end)
-  let changes = getRange(start, end)
-  let result = calculate(value, changes)
-  let average = getAverage(changes)
-  let growth = getGrowth(value, result)
+  end = end === undefined ? data.at(-1)[0] : getDate(end)
+  const changes = getRange(start, end)
+  const result = calculate(value, changes)
+  const average = getAverage(changes)
+  const growth = getGrowth(value, result)
 
   return {
     start, end,
@@ -26,7 +26,7 @@ const caInflation = (value, start, end) => {
 }
 
 caInflation.getLatest = () => {
-  return data[data.length - 1][0]
+  return data.at(-1)[0]
 }
 
 export default caInflation

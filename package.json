@@ -2,13 +2,11 @@
   "name": "ca-inflation",
   "version": "0.0.2",
   "description": "calculate the inflation rate of the Canadian dollar",
-  "main": "src/index.js",
-  "unpkg": "builds/ca-inflation.min.js",
-  "types": "types/index.d.ts",
-  "type": "module",
+  "license": "MIT",
+  "repository": "github:spencermountain/ca-inflation",
   "homepage": "https://work.spencermountain.dev/ca-inflation",
   "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
-  "sideEffects": false,
+  "type": "module",
   "exports": {
     ".": {
       "import": {
@@ -21,6 +19,16 @@
       }
     }
   },
+  "main": "./src/index.js",
+  "types": "./types/index.d.ts",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "keywords": [
+    "inflation",
+    "canada"
+  ],
   "scripts": {
     "build": "rollup -c --silent",
     "update": "node ./scripts/update.js",
@@ -29,19 +37,11 @@
     "watch": "node --watch scratch.js",
     "lint": "eslint ."
   },
-  "repository": "github:spencermountain/ca-inflation",
   "files": [
-    "src",
     "builds",
+    "src",
     "types"
   ],
-  "prettier": {
-    "trailingComma": "none",
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true,
-    "printWidth": 100
-  },
   "devDependencies": {
     "@rollup/plugin-terser": "^1.0.0",
     "eslint": "10.11.0",
@@ -51,5 +51,12 @@
     "tap-dancer": "0.4.0",
     "tape": "5.10.2"
   },
-  "license": "MIT"
+  "unpkg": "builds/ca-inflation.min.js",
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
+  }
 }

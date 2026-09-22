@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
-import { readFileSync, writeFileSync } from 'fs'
-import { join } from 'path'
+ /* eslint-disable no-console */
+import { readFileSync, writeFileSync } from 'node:fs'
+import { join } from 'node:path'
 
 // Read package.json
 const packagePath = join(process.cwd(), 'package.json')
