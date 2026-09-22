@@ -16,12 +16,12 @@ const getDate = function (input) {
 
 const getRange = (start, end) => {
   const startIndex = data.findIndex((d) => d[0] === start)
-  const endIndex = data.findIndex((d) => d[0] === end)
   if (startIndex === -1) {
     throw new RangeError(
       `ca-inflation: no data for '${start}' - data covers ${firstDate} to ${lastDate}`
     )
   }
+  const endIndex = data.findIndex((d) => d[0] === end)
   if (endIndex === -1) {
     throw new RangeError(
       `ca-inflation: no data for '${end}' - data covers ${firstDate} to ${lastDate}`

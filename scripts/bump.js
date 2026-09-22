@@ -1,9 +1,9 @@
- /* eslint-disable no-console */
+/* eslint-disable no-console */
 import { readFileSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import path from 'node:path'
 
 // Read package.json
-const packagePath = join(process.cwd(), 'package.json')
+const packagePath = path.join(process.cwd(), 'package.json')
 const packageJson = JSON.parse(readFileSync(packagePath, 'utf8'))
 
 // Parse current version

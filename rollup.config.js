@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-import commonjs from 'rollup-plugin-commonjs'
+import commonjs from '@rollup/plugin-commonjs'
 import terser from '@rollup/plugin-terser'
-import resolve from 'rollup-plugin-node-resolve'
+import { nodeResolve as resolve } from '@rollup/plugin-node-resolve'
 import fs from 'node:fs'
 
 const pkg = JSON.parse(fs.readFileSync('./package.json').toString())
