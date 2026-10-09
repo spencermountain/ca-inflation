@@ -1,17 +1,30 @@
 <div align="center">
-  <img src="https://cloud.githubusercontent.com/assets/399657/23590290/ede73772-01aa-11e7-8915-181ef21027bc.png" />
+  <div><b>ca-inflation</b></div>
   <div>calculate inflation for Canadian Dollars</div>
-  <a href="https://npmjs.org/package/ca-inflation">
+  <div><code>npm install ca-inflation</code></div>
+  <div align="center">
+    <sub>
+      by
+      <a href="https://github.com/spencermountain">Spencer Kelly</a>
+    </sub>
+  </div>
+  <img height="25px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
+</div>
+<!--2nd row-->
+<div align="center">
+  <div>
+    <a href="https://npmjs.org/package/ca-inflation">
     <img src="https://img.shields.io/npm/v/ca-inflation.svg?style=flat-square" />
   </a>
-  <a href="https://nodejs.org/api/documentation.html#documentation_stability_index">
-    <img src="https://img.shields.io/badge/stability-stable-green.svg?style=flat-square" />
+  <a href="https://bundlephobia.com/result?p=ca-inflation">
+    <img src="https://badgen.net/bundlejs/min/ca-inflation" />
   </a>
+  </div>
 </div>
 
-How does money change its worth? Do some prices change, more than others? Is it good? Where does the money go?
+How does money change its worth? Isn't money one thing? Where did it go?
 
-This is a (very) small javascript library to calculate inflation-adjusted prices for Canadian Dollars, using annual Consumer Price Index inflation rates from the [World Bank](https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=CA), via [Our World in Data](https://ourworldindata.org/grapher/inflation-of-consumer-prices). The data covers **1960 to 2024**.
+This is a (very) small javascript library to calculate inflation-adjusted prices for Canadian Dollars, using annual Consumer Price Index inflation rates from the [World Bank](https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=CA), via [Our World in Data](https://ourworldindata.org/grapher/inflation-of-consumer-prices). The data covers from **1960 to present**.
 
 <div align="center">
   <code>npm install ca-inflation</code>
@@ -65,4 +78,4 @@ Please let me know if there are any issues. This is important information, and t
 * [us-inflation](https://www.npmjs.com/package/us-inflation) by @jeremiak
 * [uk-inflation](https://github.com/craig552uk/uk-inflation) by @craig552uk
 
-MIT
+MIT - PRs welcome
