@@ -26,7 +26,8 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "build": "rollup -c --silent",
+    "build": "node ./scripts/version.js && rollup -c --silent",
+    "version": "node ./scripts/version.js",
     "update": "node ./scripts/update.js",
     "release": "./scripts/release.sh",
     "test": "tape tests/*.test.js | tap-dancer",

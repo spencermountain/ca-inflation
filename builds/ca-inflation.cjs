@@ -1,4 +1,4 @@
-/* spencermountain/ca-inflation 0.0.2 MIT */
+/* spencermountain/ca-inflation 0.1.0 MIT */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -75,6 +75,8 @@
     ['2025-01-01', 2.072324]
   ];
 
+  var version = '0.1.0';
+
   const firstDate = data[0][0];
   const lastDate = data.at(-1)[0];
 
@@ -91,12 +93,12 @@
 
   const getRange = (start, end) => {
     const startIndex = data.findIndex((d) => d[0] === start);
-    const endIndex = data.findIndex((d) => d[0] === end);
     if (startIndex === -1) {
       throw new RangeError(
         `ca-inflation: no data for '${start}' - data covers ${firstDate} to ${lastDate}`
       )
     }
+    const endIndex = data.findIndex((d) => d[0] === end);
     if (endIndex === -1) {
       throw new RangeError(
         `ca-inflation: no data for '${end}' - data covers ${firstDate} to ${lastDate}`
@@ -152,6 +154,8 @@
   caInflation.getLatest = () => {
     return data.at(-1)[0]
   };
+
+  caInflation.version = version;
 
   return caInflation;
 

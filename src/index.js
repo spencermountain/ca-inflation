@@ -1,4 +1,5 @@
 import data from './yearly.js'
+import version from './_version.js'
 import { getDate, getRange, round, getGrowth, getAverage } from './lib.js'
 
 const calculate = function (val, changes) {
@@ -28,5 +29,7 @@ const caInflation = (value, start, end) => {
 caInflation.getLatest = () => {
   return data.at(-1)[0]
 }
+
+caInflation.version = version
 
 export default caInflation
