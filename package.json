@@ -26,7 +26,8 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "build": "rollup -c --silent",
+    "build": "node ./scripts/version.js && rollup -c --silent",
+    "version": "node ./scripts/version.js",
     "update": "node ./scripts/update.js",
     "release": "./scripts/release.sh",
     "test": "tape tests/*.test.js | tap-dancer",
@@ -46,9 +47,9 @@
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
-    "eslint": "10.11.0",
-    "rollup": "4.63.4",
-    "tap-dancer": "0.4.0",
+    "eslint": "10.12.0",
+    "rollup": "4.64.2",
+    "tap-dancer": "0.4.4",
     "tape": "5.10.2"
   },
   "unpkg": "builds/ca-inflation.min.js",

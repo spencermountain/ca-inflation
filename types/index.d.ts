@@ -19,6 +19,7 @@ export interface CaInflationFunction {
   (value: number, start: DateInput, end?: DateInput): InflationResult
   /** the most-recent date in the data, like '2024-01-01' */
   getLatest(): string
+  version: string
 }
 
 export declare const caInflation: CaInflationFunction
