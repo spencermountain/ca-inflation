@@ -22,13 +22,13 @@
   </div>
 </div>
 
+<!-- spacer -->
+<img height="20px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
+
 How does money change its worth? Isn't money one thing? Where did it go?
 
 This is a (very) small javascript library to calculate inflation-adjusted prices for Canadian Dollars, using annual Consumer Price Index inflation rates from the [World Bank](https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=CA), via [Our World in Data](https://ourworldindata.org/grapher/inflation-of-consumer-prices). The data covers from **1960 to present**.
 
-<div align="center">
-  <code>npm install ca-inflation</code>
-</div>
 
 ### Usage
 
